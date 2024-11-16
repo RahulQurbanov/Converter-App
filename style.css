@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Roboto", serif;
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    background-color: #F5F5F6;
+}
+.head-left{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.about{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: .8em;
+    margin-left: 95px;
+    color: #959BA4;
+    cursor: pointer;
+}
+.about .bank{
+    color: black;
+}
+.head-right button {
+    padding: 7px 14px;
+    background-color: white;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+main {
+    width: 730px;
+    margin: auto;
+    margin-top: 58px;
+    padding: 10px;
+    
+}
+h1 {
+    font-size: 40px;
+}
+.main-box {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h4{
+    color: #9F9F9F;
+    font-size: .8em;
+    font-weight: 400;
+}
+.change-button {
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    background-color: white;
+    border: 1px solid #E5E5E5;
+    margin-top: 10px;
+    overflow: hidden; 
+}
+.main-left, .main-right {
+    width: 290px;
+}
+.change-button p {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    color: #9F9F9F;
+    border-right: 1px solid #E5E5E5;
+}
+
+.change-button p:last-child {
+    border-right: none;
+}
+p.from-rub, p.to-usd {
+    background-color: #833AE0;
+    color: white; 
+}
+.change-area {
+    padding: 15px;
+    margin-top: 20px;
+    border: 1px solid #E5E5E5;
+}
+.change-area input {
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.change-area p {
+    margin-top: 30px;
+    color: #C6C6C6;
+    font-size: .8em;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width:820px) and (max-width: 991px) {
+    .about {
+        margin-left: 39px;
+        font-size: .7em;
+    }
+    .head-right button {
+        padding: 5px 12px;
+    }
+    h1 {
+        font-size: 27px;
+    }
+    .change-area input {
+        font-size: 1.5em;
+    }
+    .change-button p {
+        padding: 8px 0;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 819px) {
+    .about {
+        font-size: .6em;
+        margin-left: 0;
+    }
+    .head-right button {
+        padding: 4px 10px;
+        font-size: .8em;
+    }
+    .head-left img {
+        width: 75px;
+    }
+    h1 {
+        font-size: 27px;
+    }
+    .change-area input {
+        font-size: 1.5em;
+    }
+    .change-button p {
+        padding: 8px 0;
+    }
+    main {
+        width: 685px;
+    }
+}
