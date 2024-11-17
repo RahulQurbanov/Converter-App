@@ -23,7 +23,7 @@ header{
     align-items: center;
     gap: 15px;
     font-size: .8em;
-    margin-left: 95px;
+    margin-left: 110px;
     color: #959BA4;
     cursor: pointer;
 }
@@ -81,13 +81,13 @@ h4{
     color: #9F9F9F;
     border-right: 1px solid #E5E5E5;
 }
+.change-button p.active {
+    background-color: #833AE0;
+    color: white;
+}
 
 .change-button p:last-child {
     border-right: none;
-}
-p.from-rub, p.to-usd {
-    background-color: #833AE0;
-    color: white; 
 }
 .change-area {
     padding: 15px;
@@ -114,6 +114,11 @@ p.from-rub, p.to-usd {
 
 
 
+@media (min-width:992px) and (max-width:1400px) {
+    .about {
+        margin-left: 95px;
+    }
+}
 
 @media (min-width:820px) and (max-width: 991px) {
     .about {
