@@ -26,15 +26,15 @@ async function getExchangeRates() {
     }
 
     try {
-        let data = await fetch('https://api.currencyapi.com/v3/latest?apikey=cur_live_VEOkI8dY7qpQ3Fr34UIfRgaEHOsPYuvZyzUcAfMT&symbols=USD,EUR,GBP,RUB');
-        let json = await data.json();
-        exchangeRates = json.data;
+        let response = await fetch('https://v6.exchangerate-api.com/v6/be6fd1bf862693f3cc3cb840/latest/USD');
+        let json = await response.json();
+        exchangeRates = json.conversion_rates;
 
         internetAlert.style.display = 'none';
         displayConversionRates();
         updateActiveCurrencyStyle();
     } catch (error) {
-        alert('Fetch duzgun islemir!');
+        alert('Məlumatları gətirərkən xəta baş verdi!');
     }
 }
 getExchangeRates();
@@ -46,17 +46,21 @@ function calculateConversion() {
         return;
     }
 
-    internetAlert.style.display = 'none'; 
-    let fromRate = exchangeRates[fromCurrency]?.value || 1;
-    let toRate = exchangeRates[toCurrency]?.value || 1;
+    internetAlert.style.display = 'none';
+    let fromRate = exchangeRates[fromCurrency] || 1;
+    let toRate = exchangeRates[toCurrency] || 1;
 
-    let regex = /^[0-9.,]*$/;
+    // Input validation ve `,` düzeltme
+    fromInput.value = fromInput.value.replace(',', '.');
+    toInput.value = toInput.value.replace(',', '.');
+
+    let regex = /^[0-9.]*$/;
     if (!regex.test(fromInput.value)) {
-        fromInput.value = fromInput.value.replace(/[^0-9.,]/g, '');
+        fromInput.value = fromInput.value.replace(/[^0-9.]/g, '');
         alert('Zəhmət olmasa yalnız rəqəm daxil edin.');
     }
     if (!regex.test(toInput.value)) {
-        toInput.value = toInput.value.replace(/[^0-9.,]/g, '');
+        toInput.value = toInput.value.replace(/[^0-9.]/g, '');
         alert('Zəhmət olmasa yalnız rəqəm daxil edin.');
     }
 
@@ -69,8 +73,6 @@ function calculateConversion() {
             fromInput.value = (amount * (fromRate / toRate)).toFixed(5);
         }
     }
-    console.log(fromInput.value)
-    console.log(toInput.value)
     displayConversionRates();
 }
 
@@ -79,8 +81,8 @@ function displayConversionRates() {
     let ratesDisplayFrom = document.querySelector('.main-left .change-area p');
     let ratesDisplayTo = document.querySelector('.main-right .change-area p');
 
-    let fromRate = exchangeRates[fromCurrency]?.value || 1;
-    let toRate = exchangeRates[toCurrency]?.value || 1;
+    let fromRate = exchangeRates[fromCurrency] || 1;
+    let toRate = exchangeRates[toCurrency] || 1;
 
     ratesDisplayFrom.textContent = `1 ${fromCurrency} = ${(toRate / fromRate).toFixed(5)} ${toCurrency}`;
     ratesDisplayTo.textContent = `1 ${toCurrency} = ${(fromRate / toRate).toFixed(5)} ${fromCurrency}`;
@@ -107,12 +109,12 @@ function updateActiveCurrencyStyle() {
 
 // Sol veya sağ giriş değiştiğinde aktif alanı takip et
 fromInput.addEventListener('input', () => {
-    activeInput = 'from'; 
+    activeInput = 'from';
     calculateConversion();
 });
 
 toInput.addEventListener('input', () => {
-    activeInput = 'to'; 
+    activeInput = 'to';
     calculateConversion();
 });
 
@@ -120,29 +122,34 @@ toInput.addEventListener('input', () => {
 document.querySelectorAll('.change-button p').forEach(button => {
     button.addEventListener('click', (e) => {
         let parent = e.target.closest('.change-button').parentNode;
-        let isFrom = parent.classList.contains('main-left'); 
+        let isFrom = parent.classList.contains('main-left');
 
         if (isFrom) {
-            fromCurrency = e.target.textContent; 
+            fromCurrency = e.target.textContent;
         } else {
             toCurrency = e.target.textContent;
         }
 
-        updateActiveCurrencyStyle(); 
-        calculateConversion(); 
+        updateActiveCurrencyStyle();
+        calculateConversion();
     });
 });
 
 // İnternet bağlantısı durumunu takip et
 window.addEventListener('online', () => {
     internetAlert.style.display = 'none';
-    getExchangeRates(); 
-    calculateConversion(); 
+    getExchangeRates();
+    calculateConversion();
 });
 
 window.addEventListener('offline', () => {
     internetAlert.style.display = 'block';
 });
 
+// Burger menyu açıb-bağlama
+let burgerMenu = document.querySelector('.burger-menu');
+let aboutMenu = document.querySelector('.about');
 
-
+burgerMenu.addEventListener('click', () => {
+    aboutMenu.classList.toggle('active');
+});

@@ -30,6 +30,11 @@ header{
 .about .bank{
     color: black;
 }
+.head-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 .head-right button {
     padding: 7px 14px;
     background-color: white;
@@ -107,12 +112,17 @@ h4{
     font-size: .8em;
 }
 
-
-
-
-
-
-
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.burger-menu span {
+    width: 20px;
+    height: 3px;
+    background-color: #000;
+}
 
 @media (min-width:992px) and (max-width:1400px) {
     .about {
@@ -162,5 +172,26 @@ h4{
     }
     main {
         width: 685px;
+    }
+}
+
+@media (max-width: 700px) {
+    .burger-menu {
+        display: flex;
+    }
+    .about {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: white;
+        width: 100%;
+        border: 1px solid #E5E5E5;
+        padding: 10px;
+        z-index: 10;
+    }
+    .about.active {
+        display: flex;
     }
 }
