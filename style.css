@@ -194,4 +194,64 @@ h4{
     .about.active {
         display: flex;
     }
+    header{
+        justify-content: space-between;
+    }
+    h1 {
+        font-size: 27px;
+    }
+    main {
+        width: 650px;
+    }
+    .about {
+        font-size: .6em;
+        margin-left: 0;
+    }
+    .head-right button {
+        padding: 4px 10px;
+        font-size: .8em;
+    }
+    .head-left img {
+        width: 75px;
+    }
+    .change-area input {
+        font-size: 1.5em;
+    }
+    .change-button p {
+        padding: 8px 0;
+    }
+}
+
+@media (min-width:600px) and (max-width:699px) {
+    .main-box {
+        flex-direction: column;
+        gap: 35px;
+    }
+    main {
+        width: 600px;
+    }
+}
+@media (min-width:400px) and (max-width:600px) {
+    .main-box {
+        flex-direction: column;
+        gap: 35px;
+    }
+    main {
+        width: 400px;
+    }
+    h1 {
+        font-size: 25px;
+    }
+}
+@media (min-width:320px) and (max-width:400px) {
+    .main-box {
+        flex-direction: column;
+        gap: 35px;
+    }
+    main {
+        width: 320px;
+    }
+    h1 {
+        font-size: 22px;
+    }
 }
