@@ -6,17 +6,7 @@ let toCurrency = "USD";
 let activeInput = "from";
 
 // İnternet bağlantısı kontrol uyarısı
-let internetAlert = document.createElement('div');
-internetAlert.style.position = 'fixed';
-internetAlert.style.top = '10px';
-internetAlert.style.right = '10px';
-internetAlert.style.padding = '10px';
-internetAlert.style.backgroundColor = 'red';
-internetAlert.style.color = 'white';
-internetAlert.style.fontWeight = 'bold';
-internetAlert.style.display = 'none';
-internetAlert.textContent = 'İnternet bağlantısı yoxdu. Zəhmət olmasa bağlantınızı kontrol eləyin.';
-document.body.appendChild(internetAlert);
+let internetAlert = document.querySelector(".innerAlert");
 
 // Döviz oranlarını API'den al
 async function getExchangeRates() {
