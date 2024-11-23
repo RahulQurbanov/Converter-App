@@ -55,6 +55,7 @@ function calculateConversion() {
 function validateInput(input) {
     input.value = input.value.replace(/[^0-9.,]/g, '').replace(",", ".");
     input.value = input.value.replace(/^0+(?!\.|$)/, '');
+    input.value = input.value.replace(/(\..*)\./g, '$1'); 
     if (input.value.startsWith('.')) input.value = input.value;
     input.value = input.value.replace(/^(\d+\.\d{5}).*$/, '$1');
     if (input.value.length > 20) input.value = input.value.slice(0, 20);
